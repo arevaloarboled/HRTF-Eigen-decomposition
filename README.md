@@ -5,7 +5,7 @@
   </a>
 </p>
 
-Audio spatialization in Matlab based on reconstruction of HRTFs from a Eigen decomposition. Synthetic HRTFs in the compressed database were set to have less than 1 dB spectral distortion between 0.1 and 16 kHz. The differences between the compressed measurements with those in the original database (Qu et al. databse [1]) do not seem to translate into degradation of perceptual location accuracy. 
+Audio spatialization in Matlab based on reconstruction of HRTFs from a Eigen decomposition. Synthetic HRTFs in the compressed database were set to have less than 1 dB spectral distortion between 0.1 and 16 kHz. The differences between the compressed measurements with those in the original database (Qu et al. database [1]) do not seem to translate into degradation of perceptual location accuracy. 
 
 ## Usage
 Input parameters:
