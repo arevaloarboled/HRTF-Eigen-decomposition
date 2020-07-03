@@ -20,7 +20,7 @@ Input parameters:
 %load an audio vector
 [audio,fs]=audioread('monophonic_audio.wav');
 %if the audio is not sampled at 48000, re sample to 48000
-if fs!=48000
+if fs~=48000
 	audio=resample(audio,48000,fs);
 end
 %create the location path of the sound source
