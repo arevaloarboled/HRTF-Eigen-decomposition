@@ -29,5 +29,5 @@ pos=[repelem(20,360);repelem(0,360);0:1:359;([1:size(audio,1)/360:size(audio,1)]
 HRTF_Eigen_spatialization(audio,pos);
 ```
 
-## Reference
+## References
   [1] T.  Qu,  Z.  Xiao,  M.  Gong,  Y.  Huang,  X.  Li,  and  X.  Wu,  “Distance-Dependent Head-Related Transfer Functions Measured With High Spa-tial  Resolution  Using  a  Spark  Gap,”IEEE Trans. on Audio, Speech &Language Processing, vol. 17, no. 6, pp. 1124–1132, 2009.
