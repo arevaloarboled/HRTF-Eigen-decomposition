@@ -120,10 +120,10 @@ function [hrtfs,delays]=get_filter(pos,pinna,db)
             hrtfs(:,1)=db.r_mean;
             hrtfs(:,2)=db.r_mean;
             v=db.r_V; %get the v for the pinna selected
-            idr=find(db.inter_coor(:,1)==d & db.inter_coor(:,2)==e & db.inter_coor(:,3)==a); %find the index of the interpolation weigths for the rigth ear
+            idr=find(db.inter_coor(:,1)==d & db.inter_coor(:,2)==e & round(db.inter_coor(:,3))==round(a)); %find the index of the interpolation weigths for the rigth ear
             idl=[pos(1) pos(2) mod(360-pos(3),360)];
             [d,e,a]=fetch_position(idl); %fetch the position in the mesh of interpolation calculated offline
-            idl=find(db.inter_coor(:,1)==d & db.inter_coor(:,2)==e & db.inter_coor(:,3)==a); %find the index of the interpolation weigths for the left ear
+            idl=find(db.inter_coor(:,1)==d & db.inter_coor(:,2)==e & round(db.inter_coor(:,3))==round(a)); %find the index of the interpolation weigths for the left ear
             ws_l=arrayfun(@(x) db.r_coe{db.idx(idl,x)}.*db.ws(idl,x),[1:4],'un',0); %caluculate the interpolated coefficients to reconstruct hrtf for the left ear
             ws_r=arrayfun(@(x) db.r_coe{db.idx(idr,x)}.*db.ws(idr,x),[1:4],'un',0); %caluculate the interpolated coefficients to reconstruct hrtf for the right ear
             coe_l=zeros(1,max(cellfun(@(x) size(x,2),ws_l)));
