@@ -1,4 +1,4 @@
-function HRTF_Eigen_spatialization(audio,positions,output_name,pinna,DB)
+function HRTF_Eigen_spatialization_DB(audio,positions,output_name,pinna,DB)
 % binaural spatialization of the audio vector so its apparent location will be 
 % described by the path positions and storage the spatialization result in output_name.
 %
@@ -13,6 +13,7 @@ function HRTF_Eigen_spatialization(audio,positions,output_name,pinna,DB)
 %                    file, by default will be "spatialization.wav"
 %       pinna: specfify the size of the pinna between Large 'l' or Small 's', by
 %              default is taken the Large pinna
+%       DB: Specify the database to use.
 %
 % SEE ALSO 
 %
