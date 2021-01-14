@@ -11,6 +11,7 @@ function Eigen_HRTF = CreateEigenHRTF(sr,hrtf_size,max_db,total_size)
 %       total_size: Specfify the size of the HRIR to be converted to HRTF.
 %                   I.e., the HRIR will be padded with zeros until reach
 %                   the total_size.
+% OUTPUT Eigen_HRTF: Eigen HRTF decomposition.
 %
 % SEE ALSO 
 %
