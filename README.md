@@ -5,7 +5,7 @@
   </a>
 </p>
 
-Audio spatialization in Matlab based on reconstruction of HRTFs from a Eigen decomposition. Synthetic HRTFs in the compressed database were set to have less than 1 dB spectral distortion between 0.1 and 16 kHz. The differences between the compressed measurements with those in the original database (Qu et al. database [1]) do not seem to translate into degradation of perceptual location accuracy. 
+Audio spatialization in Matlab based on reconstruction of HRTFs from a Eigen decomposition. Synthetic HRTFs in the compressed database were set to have less than 1 dB spectral distortion between 0.1 and 16 kHz. The differences between the compressed measurements with those in the original database (Qu et al. database [1]) do not seem to translate into degradation of perceptual location accuracy. Methods and results was published here [2].
 
 ## Usage
 Input parameters:
@@ -36,5 +36,19 @@ A spatialization demo is also provided. Here, a music box is spatialized using t
 pos=[repelem(20,360);arrayfun(@(x) sin(deg2rad(x)*asin(1)/deg2rad(180))*60,[0:359]);0:359;([1:size(audio,1)/360:size(audio,1)]/48000)]';
 ```
 
+# Eigen database decomposition
+
+In case different sample rate or size of HRTF, a Eigen decomposition of the Qu et al. database described in [1] can be done using the `DBtoEigen/CreateEigenHRTF.m` function.
+
+## Usage
+
+* **sr:** Sample rate.
+* **hrtf_size:** Actual size of the HRIR used to create the HRTF database.
+* **max_db:** dB treshold for the reconstruction.
+* **total_size:** Specfify the size of the HRIR to be converted to HRTF. I.e., the HRIR will be padded with zeros until reach the total_size.
+
+As an output of this script, an Eigen HRTF structure is returned. This structure can be pass as a parameter for the `HRTF_Eigen_spatialization_DB.m` function.
+
 ## References
-  [1] T.  Qu,  Z.  Xiao,  M.  Gong,  Y.  Huang,  X.  Li,  and  X.  Wu,  “Distance-Dependent Head-Related Transfer Functions Measured With High Spa-tial  Resolution  Using  a  Spark  Gap,”IEEE Trans. on Audio, Speech &Language Processing, vol. 17, no. 6, pp. 1124–1132, 2009.
+  [1] T.  Qu,  Z.  Xiao,  M.  Gong,  Y.  Huang,  X.  Li,  and  X.  Wu,  “Distance-Dependent Head-Related Transfer Functions Measured With High Spa-tial  Resolution  Using  a  Spark  Gap,”IEEE Trans. on Audio, Speech &Language Processing, vol. 17, no. 6, pp. 1124–1132, 2009.\
+  [2] Arevalo, Camilo & Villegas, Julian. (2020). Compressing Head-Related Transfer Function databases by Eigen decomposition. 1-6. 10.1109/MMSP48831.2020.9287134.
