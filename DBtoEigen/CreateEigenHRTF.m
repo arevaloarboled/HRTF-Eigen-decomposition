@@ -8,8 +8,8 @@ function Eigen_HRTF = CreateEigenHRTF(sr,hrtf_size,max_db,total_size)
 %       hrtf_size: Actual size of the HRIR used to create the HRTF
 %                  database.
 %       max_db: dB treshold for the reconstruction.
-%       total_size: Specfify the size of the HRIR to be converted to HRTF.
-%                   I.e., the HRIR will be padded with zeros until reach
+%       total_size: Specify the size of the HRIR to be converted to HRTF.
+%                   I.e., the HRIR will be padded with zeros until reaching
 %                   the total_size.
 % OUTPUT Eigen_HRTF: Eigen HRTF decomposition.
 %
@@ -132,11 +132,11 @@ function Eigen_HRTF = CreateEigenHRTF(sr,hrtf_size,max_db,total_size)
         if J==1
             Eigen_HRTF.l_coe=coes;
             Eigen_HRTF.l_delays=single(itds');
-            Eigen_HRTF.l_V=Eigen_HRTF.l_V(:,1:max(arrayfun(@(x) size(Eigen_HRTF.l_coe{i},2),1:6344)));
+            Eigen_HRTF.l_V=Eigen_HRTF.l_V(:,1:max(arrayfun(@(x) size(Eigen_HRTF.l_coe{x},2),1:6344)));
         else
             Eigen_HRTF.s_coe=coes;
             Eigen_HRTF.s_delays=single(itds');
-            Eigen_HRTF.s_V=single(Eigen_HRTF.s_V(:,1:max(arrayfun(@(x) size(Eigen_HRTF.s_coe{i},2),1:6344))));
+            Eigen_HRTF.s_V=single(Eigen_HRTF.s_V(:,1:max(arrayfun(@(x) size(Eigen_HRTF.s_coe{x},2),1:6344))));
         end
     end
     disp('Including interpolations....')

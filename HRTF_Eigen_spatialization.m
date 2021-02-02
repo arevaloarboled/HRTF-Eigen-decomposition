@@ -50,7 +50,17 @@ function HRTF_Eigen_spatialization(audio,positions,output_name,pinna)
         if size(positions,1)>p_i
             if i/sr>=positions(p_i,4)
                 current_p=positions(p_i,1:3);
-                p_i=p_i+1;
+                if current_p(2)<-40
+                    current_p=-40;
+                end
+                if round(current_p(3))==360
+                    current_p(3)=0;
+                end
+                if current_p(1)<20
+                    current_p(1)=20;
+                end
+                p_i=p_i+1;   
+                %current_p
                 [hrtfs,delays]=get_filter(current_p,pinna,Eigen_HRTF);
             end
         end
@@ -155,7 +165,7 @@ function [d,e,a]=fetch_position(pos)
         end
     end
     a=360/round(cos(deg2rad(e))*360);
-    pos(3)=round(pos(3)/a);
+    pos(3)=round(pos(3)/a);    
     a=0:a:359;
     a=a(pos(3)+1);
 end

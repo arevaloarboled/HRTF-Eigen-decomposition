@@ -1,4 +1,4 @@
-function HRTF_Eigen_spatialization_DB(audio,positions,output_name,pinna,DB)
+function HRTF_Eigen_spatialization_DB(audio,positions,output_name,pinna,DB,gain)
 % binaural spatialization of the audio vector so its apparent location will be 
 % described by the path positions and storage the spatialization result in output_name.
 %
@@ -12,8 +12,9 @@ function HRTF_Eigen_spatialization_DB(audio,positions,output_name,pinna,DB)
 %       output_name: file name of output to storage the binaural audio
 %                    file, by default will be "spatialization.wav"
 %       pinna: specfify the size of the pinna between Large 'l' or Small 's', by
-%              default is taken the Large pinna
+%              default is taken the Large pinna.
 %       DB: Specify the database to use.
+%       gain: a gain for the audio, by default is 1.
 %
 % SEE ALSO 
 %
@@ -38,8 +39,11 @@ function HRTF_Eigen_spatialization_DB(audio,positions,output_name,pinna,DB)
         sr=DB.sr;
         total_size=size(DB.s_mean,1);
         w_s=round(total_size-DB.hrtf_size);
-        bf_size=size(DB.s_mean,1)+round(max(DB.s_Delays*sr));
-    end    
+        bf_size=size(DB.s_mean,1)+round(max(DB.s_delays*sr));
+    end
+    if nargin<=5
+        gain=1;
+    end
     buffer=zeros(bf_size,2); %audio buffer  
     output=[0,0]; %binaural output audio vector
     win=hann(w_s,'periodic');
@@ -91,7 +95,7 @@ function HRTF_Eigen_spatialization_DB(audio,positions,output_name,pinna,DB)
         reverseStr = repmat(sprintf('\b'), 1, length(msg));
     end
     disp('finished!')
-    audiowrite(output_name, output(2:size(output,1),:), sr);
+    audiowrite(output_name, output(2:size(output,1),:)*gain, sr);
 end
 
 function [hrtfs,delays]=get_filter(pos,pinna,db,sr,total_size)
@@ -141,8 +145,8 @@ function [hrtfs,delays]=get_filter(pos,pinna,db,sr,total_size)
                 coe_l(1:size(ws_l{j},2))=coe_l(1:size(ws_l{j},2))+ws_l{j};
                 coe_r(1:size(ws_r{j},2))=coe_r(1:size(ws_r{j},2))+ws_r{j};
             end
-            delays(1)=round(sum(db.l_delays(db.idx(idl,:)).*db.ws(idl,:))*sr); %interpolate the delays for the pinna selected for the left ear
-            delays(2)=round(sum(db.l_delays(db.idx(idr,:)).*db.ws(idr,:))*sr); %interpolate the delays for the pinna selected for the left ear
+            delays(1)=round(sum(db.l_delays(db.idx(idl,:)).*db.ws(idl,:)')*sr); %interpolate the delays for the pinna selected for the left ear
+            delays(2)=round(sum(db.l_delays(db.idx(idr,:)).*db.ws(idr,:)')*sr); %interpolate the delays for the pinna selected for the left ear
         else 
             hrtfs(:,1)=db.r_mean;
             hrtfs(:,2)=db.r_mean;
@@ -159,8 +163,8 @@ function [hrtfs,delays]=get_filter(pos,pinna,db,sr,total_size)
                 coe_l(1:size(ws_l{j},2))=coe_l(1:size(ws_l{j},2))+ws_l{j};
                 coe_r(1:size(ws_r{j},2))=coe_r(1:size(ws_r{j},2))+ws_r{j};
             end
-            delays(1)=round(sum(db.r_delays(db.idx(idl,:)).*db.ws(idl,:))*sr); %interpolate the delays for the pinna selected for the left ear
-            delays(2)=round(sum(db.r_delays(db.idx(idr,:)).*db.ws(idr,:))*sr); %interpolate the delays for the pinna selected for the left ear
+            delays(1)=round(sum(db.r_delays(db.idx(idl,:)).*db.ws(idl,:)')*sr); %interpolate the delays for the pinna selected for the left ear
+            delays(2)=round(sum(db.r_delays(db.idx(idr,:)).*db.ws(idr,:)')*sr); %interpolate the delays for the pinna selected for the left ear
         end        
     end
     %reconstruction    
