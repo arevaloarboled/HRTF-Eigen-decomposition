@@ -13,7 +13,7 @@ Input parameters:
 * **Positions:**  A vector with the location path in spherical coordinates specifying the second in which the sound source will have the described location, the first position is taken as an initial position (distance, elevation, azimuth, seconds).
 * **Output name (optional):** Filename (in `wav` format) to storage the binaural audio file resulting from the spatialization, by default, will be "spatialization.wav".
 * **pinna (optional):** Specify the size of the pinna between Large 'l' or Small 's', by default is taken the Large pinna.
-
+* **gain:** A gain for the audio, by default is 1.
 ## Example
 
 ```matlab
