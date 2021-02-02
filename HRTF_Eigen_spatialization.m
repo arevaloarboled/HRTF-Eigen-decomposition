@@ -1,4 +1,4 @@
-function HRTF_Eigen_spatialization(audio,positions,output_name,pinna)
+function HRTF_Eigen_spatialization(audio,positions,output_name,pinna,gain)
 % binaural spatialization of the audio vector so its apparent location will be 
 % described by the path positions and storage the spatialization result in output_name.
 %
@@ -13,6 +13,7 @@ function HRTF_Eigen_spatialization(audio,positions,output_name,pinna)
 %                    file, by default will be "spatialization.wav"
 %       pinna: specfify the size of the pinna between Large 'l' or Small 's', by
 %              default is taken the Large pinna
+%       gain: a gain for the audio, by default is 1.
 %
 % SEE ALSO 
 %
@@ -26,6 +27,9 @@ function HRTF_Eigen_spatialization(audio,positions,output_name,pinna)
     end
     if nargin<=3
         pinna='l';
+    end
+    if nargin<=4
+        gain=1;
     end
     sr=48000;
     load('Eigen_HRTF.mat'); %load the database
@@ -74,7 +78,7 @@ function HRTF_Eigen_spatialization(audio,positions,output_name,pinna)
         output=[[output(:,1);buffer(1:w_s/2,1)],[output(:,2);buffer(1:w_s/2,2)]];        
         buffer=[buffer(w_s/2+1:1024,:);zeros(w_s/2,2)];        
     end
-    audiowrite(output_name, output(2:size(output,1),:), sr);
+    audiowrite(output_name, output(2:size(output,1),:)*gain, sr);
 end
 
 function [hrtfs,delays]=get_filter(pos,pinna,db)
