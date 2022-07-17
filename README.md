@@ -56,8 +56,12 @@ A C API with the compressed database is provided in `libEigenHRTF`. This API onl
 # External resources
 
 - Binaural spatializer for Unity is available in the following repository:
+
 https://github.com/arevaloarboled/Eigen-HRTFu
-- Spatializer in a form of VST plugin implemented in Matlab is also available in the following repository: https://www.mathworks.com/matlabcentral/fileexchange/92453-eigenhrtf
+
+- Spatializer in a form of VST plugin implemented in Matlab is also available in the following repository:
+
+https://www.mathworks.com/matlabcentral/fileexchange/92453-eigenhrtf
 
 ## References
   [1] T.  Qu,  Z.  Xiao,  M.  Gong,  Y.  Huang,  X.  Li,  and  X.  Wu,  “Distance-Dependent Head-Related Transfer Functions Measured With High Spa-tial  Resolution  Using  a  Spark  Gap,”IEEE Trans. on Audio, Speech &Language Processing, vol. 17, no. 6, pp. 1124–1132, 2009.\
