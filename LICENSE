@@ -1,21 +1,13 @@
-MIT License
+AREVALO License
 
-Copyright (c) 2020 arevaloarboled
+Copyright (c) 2021 Juan Camilo Arevalo Arboleda
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+All rights reserved.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+This code was created ONLY for noncommercial research or personal use purpose. Any use, modification, or distribution of this software outside of the previously mentioned purpose or not granted in writing by the author is NOT PERMITTED. The use of this software is subject to the following conditions:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+1. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+2. You must give appropriate credit to the author of this software.
+3. Derivation of this code cannot be re-licensed under another license without the authorization in writing by the author. 
+
+The software is provided without warranty of any kind. In no event shall the authors or copyright holders be liable for any claim, damages, or other  liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
