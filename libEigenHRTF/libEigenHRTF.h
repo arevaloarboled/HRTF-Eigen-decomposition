@@ -14,7 +14,7 @@
 //AUTHOR: Camilo Arevalo - jarevalo29@javerianacali.edu.co
 //DATE: 2021-06-24
 //LICENSE
-//Copyright (c) 2021 Juan Camilo Arvalo Arboleda
+//Copyright (c) 2021 Juan Camilo Arevalo Arboleda
 //All rights reserved.
 //This code was created ONLY for noncommercial research or personal use purpose. 
 //Any use, modification, or distribution of this software outside of the previously mentioned 
